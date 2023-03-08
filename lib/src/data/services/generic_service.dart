@@ -153,7 +153,7 @@ class SimpleService {
             ? json.decode(res.data.toString())
             : res.data,
       );
-    } on DioError catch (exception, stackTrace) {
+    } on DioError catch (exception) {
       return ResponseModel(
         data: null,
         success: false,
@@ -163,7 +163,7 @@ class SimpleService {
                 ? '${exception.response!.data['message']}'
                 : exception.response!.data.toString(),
       );
-    } catch (exception, stackTrace) {
+    } catch (exception) {
       return ResponseModel(
         data: null,
         success: false,
