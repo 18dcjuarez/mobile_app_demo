@@ -10,7 +10,7 @@ class MobileAppDemoAppBar extends StatelessWidget {
     this.appBarButton = false,
     this.appBarCallback,
     this.onBackCallback,
-    this.icon = Icons.settings_outlined,
+    this.icon = Icons.star_outlined,
     this.backgroundColor = CustomColors.mainBlue,
   }) : super(key: key);
 
@@ -27,7 +27,7 @@ class MobileAppDemoAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    final photoStore = Provider.of<PhotoStore>(context);
     return Container(
       color: backgroundColor,
       width: size.width,
@@ -77,13 +77,44 @@ class MobileAppDemoAppBar extends StatelessWidget {
                 width: 30,
               )
             else
-              GestureDetector(
-                onTap: appBarCallback,
-                child: Icon(
-                  icon,
-                  color: CustomColors.colorWhite,
-                  size: 30,
-                ),
+              Observer(
+                builder: ((context) => GestureDetector(
+                      onTap: appBarCallback,
+                      child: Stack(
+                        children: [
+                          Icon(
+                            icon,
+                            color: CustomColors.colorWhite,
+                            size: 40,
+                          ),
+                          if (photoStore.selectedPhotos.isNotEmpty)
+                            Positioned(
+                              left: 0,
+                              child: Container(
+                                padding: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(60),
+                                ),
+                                constraints: const BoxConstraints(
+                                  minWidth: 22,
+                                  minHeight: 22,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '${photoStore.selectedPhotos.length}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            )
+                        ],
+                      ),
+                    )),
               )
           ],
         ),
