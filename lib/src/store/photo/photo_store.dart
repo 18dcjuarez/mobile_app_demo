@@ -18,6 +18,9 @@ abstract class PhotoPrivate with Store {
   @observable
   ObservableList<PhotoModel> selectedPhotos = ObservableList();
 
+  @observable
+  PhotoModel selectedPhotoDetail = PhotoModel();
+
   @action
   Future<void> getPhotos() async {
     isLoading = true;
@@ -43,4 +46,7 @@ abstract class PhotoPrivate with Store {
     }
     selectedPhotos.clear();
   }
+
+  void selectPhotoDetail(PhotoModel photoModel) =>
+      selectedPhotoDetail = photoModel;
 }

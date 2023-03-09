@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_demo/src/data/routes/app_routes.dart';
 import 'package:mobile_app_demo/src/store/photo/photo_store.dart';
 import 'package:mobile_app_demo/src/theme/styles.dart';
 import 'package:mobile_app_demo/src/widgets/mobile_app_demo_widgets.dart';
@@ -40,8 +41,15 @@ class FavouritePage extends StatelessWidget {
                     ),
                     itemCount: photoStore.selectedPhotos.length,
                     itemBuilder: (context, index) => MobileAppDemoPhotoTile(
-                      photoModel: photoStore.selectedPhotos[index],
-                    ),
+                        photoModel: photoStore.selectedPhotos[index],
+                        callback: () {
+                          photoStore.selectPhotoDetail(
+                              photoStore.selectedPhotos[index]);
+                          Navigator.pushNamed(
+                            context,
+                            AppRoutes.detailPage,
+                          );
+                        }),
                   ),
                 ),
               ),
