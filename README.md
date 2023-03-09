@@ -1,16 +1,13 @@
-# mobile_app_demo
+# Mobile App Demo
 
-A new Flutter project.
+A new Flutter project developed by David Cruz Juarez.
 
-## Getting Started
+## This Project is build with ❤️:
+Flutter 3.3.9 • channel stable
+Dart 2.18.5 
+We use Mobx as State Manager!
 
-This project is a starting point for a Flutter application.
+## Getting Started 🚀
 
-A few resources to get you started if this is your first Flutter project:
+This project runs under one flavor and .env file is contained in project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
