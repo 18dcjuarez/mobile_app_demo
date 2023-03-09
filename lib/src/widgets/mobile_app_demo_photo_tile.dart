@@ -1,9 +1,13 @@
 part of 'mobile_app_demo_widgets.dart';
 
 class MobileAppDemoPhotoTile extends StatefulWidget {
-  const MobileAppDemoPhotoTile({Key? key, required this.photoModel})
-      : super(key: key);
+  const MobileAppDemoPhotoTile({
+    Key? key,
+    required this.photoModel,
+    required this.callback,
+  }) : super(key: key);
   final PhotoModel photoModel;
+  final Function() callback;
 
   @override
   State<MobileAppDemoPhotoTile> createState() => _MobileAppDemoPhotoTileState();
@@ -13,10 +17,9 @@ class _MobileAppDemoPhotoTileState extends State<MobileAppDemoPhotoTile> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final photoStore = Provider.of<PhotoStore>(context);
     return GestureDetector(
       onTap: () => setState(() {
-        photoStore.starPhoto(photo: widget.photoModel);
+        widget.callback();
       }),
       child: Stack(
         children: [

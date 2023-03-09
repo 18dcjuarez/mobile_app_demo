@@ -65,6 +65,8 @@ class _HomePageState extends State<HomePage> {
                                 itemBuilder: (context, index) =>
                                     MobileAppDemoPhotoTile(
                                   photoModel: photoStore.photos[index],
+                                  callback: () => photoStore.starPhoto(
+                                      photo: photoStore.photos[index]),
                                 ),
                               ),
                             ),
